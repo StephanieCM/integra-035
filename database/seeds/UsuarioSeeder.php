@@ -13,11 +13,10 @@ class UsuarioSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('usuario')->insert([
+        DB::table('users')->insert([
         	'idUsuario'=> '1',
-        	'usuario' => 'root',
-        	'contrasena' => bcrypt('root'),
-        	'estado' => true,
+        	'name' => 'root',
+        	'password' => bcrypt('123456789'),
         ]);
     }
 }
