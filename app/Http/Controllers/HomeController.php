@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function encuesta1()
+    {
+        return view('Encuestas.encuesta1');
+    }
+
+    public function encuesta2()
+    {
+        return view('Encuestas.encuesta2');
+    }
 }

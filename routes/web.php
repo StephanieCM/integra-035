@@ -19,3 +19,5 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index'); 
+Route::get('/encuesta1','HomeController@encuesta1');
+Route::get('/encuesta2','HomeController@encuesta2');

@@ -30,6 +30,29 @@
           </span>
             </div>
         </form>
+
+         <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="">
+            <a href="/">
+                <i class="fa fa-dashboard"></i><span>Dashboard</span>
+            </a>
+        </li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i></i> <span>Encuestas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="/encuesta1"><i class="fa fa-circle-o"></i> Encuesta 1</a></li>
+            <li><a href="/encuesta2"><i class="fa fa-circle-o"></i> Encuesta 2</a></li>
+            {{-- <li><a href="/encuesta3"><i class="fa fa-circle-o"></i> Encuesta 3</a></li> --}}
+          </ul>
+        </li>
+      </ul>
         <!-- Sidebar Menu -->
 
         <ul class="sidebar-menu" data-widget="tree">
