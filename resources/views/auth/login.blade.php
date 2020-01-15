@@ -4,42 +4,81 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Inicio de Sesión</title>
-
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        </div>
+
+        <div class="card">
+            <div class="card-bpdy login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form action="{{ url('/login') }}" method="post">
+                    @csrf
+                    <!-- en esta parte hay que cambiar todo el campo a tet y los valores por la variable de nombre de usuario-->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="usuario" placeholder="User">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <!-- Mismo caso para la contraseña, se cambia por el nombre del campo de la bd -->
+                    <div class="input-group mb-3 has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Remember Me</label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+
+                <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+                <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+            </div>
+        </div>
     </div>
 
     <!-- /.login-logo -->
-    <div class="login-box-body">
+    {{-- <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
         <form method="post" action="{{ url('/login') }}">
@@ -84,26 +123,12 @@
         <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
         <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>-->
 
-    </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+    </div> --}}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- AdminLTE App -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
 </body>
 </html>
