@@ -62,4 +62,52 @@ Route::get('/parte8',function(){
     return view('Encuesta2.Parte8');
 });
 
+#rutas para la encuesta 3
+Route::get('menu', function () {
+    return view('Encuesta3.menu');
+});
+
+Route::get('p1', function () {
+    return view('Encuesta3.parte1');
+});
+Route::get('p2', function () {
+    return view('Encuesta3.parte2');
+});
+Route::get('p3', function () {
+    return view('Encuesta3.parte3');
+});
+Route::get('p4', function () {
+    return view('Encuesta3.parte4');
+});
+Route::get('p5', function () {
+    return view('Encuesta3.parte5');
+});
+Route::get('p6', function () {
+    return view('Encuesta3.parte6');
+});
+Route::get('p7', function () {
+    return view('Encuesta3.parte7');
+});
+Route::get('p8', function () {
+    return view('Encuesta3.parte8');
+});
+Route::get('p9', function () {
+    return view('Encuesta3.parte9');
+});
+Route::get('p10', function () {
+    return view('Encuesta3.parte10');
+});
+Route::get('p11', function () {
+    return view('Encuesta3.parte11');
+});
+Route::get('p12', function () {
+    return view('Encuesta3.parte12');
+});
+Route::get('p13', function () {
+    return view('Encuesta3.parte13');
+});
+Route::get('p14', function () {
+    return view('Encuesta3.parte14');
+});
+
 
