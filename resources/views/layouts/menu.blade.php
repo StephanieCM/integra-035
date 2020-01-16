@@ -25,5 +25,12 @@
         <p>Encuesta 2</p>
       </a>
     </li>
+    <li class="nav-item">
+      <a href="menu" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Encuesta 3</p>
+      </a>
+    </li>
+
   </ul>
 </li>
