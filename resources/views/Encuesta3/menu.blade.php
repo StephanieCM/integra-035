@@ -18,6 +18,5 @@
         <a href="p12" class="list-group-item list-group-item-action">12-Actos de violencia laboral</a>
         <a href="p13" class="list-group-item list-group-item-action">13-Atención a clientes y usuarios </a>
         <a href="p14" class="list-group-item list-group-item-action">14- Personas que supervisa</a>
-
     </div>
 @endsection

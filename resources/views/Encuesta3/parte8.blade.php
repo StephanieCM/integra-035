@@ -3,16 +3,15 @@
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
 @section('content')
-<div class="card">
-    <div class="card-header ">
-        <i>Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su trabajo.</i>
-    </div>
-    <div class="card-body">
-        <form >
-            @csrf
+<form >
+    @csrf
+    <div class="card">
+        <div class="card-header ">
+            <i>Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su trabajo.</i>
+        </div>
+        <div class="card-body">
             <div class="form-group row">
                 <p for="inputEmail3" class="col-sm-8 ">31- Me informan con claridad cuáles son mis funciones</p>
-
                 <div class="col-sm-4">
                     <select class="custom-select " id="" required>
                         <option value="">Seleccionar</option>
@@ -24,7 +23,6 @@
                     </select>
                 </div>
             </div>
-            
             <div class="form-group row">
                 <p for="inputEmail3" class="col-sm-8 ">32- Me explican claramente los resultados que debo obtener en mi trabajo</p>
 
@@ -94,12 +92,13 @@
                         <option value="3">Nunca</option>
                     </select>
                 </div>
-            </div> 
-            <div class="card-footer ">
-                <button type="button" class="btn btn-primary float-right">Guardar</button>
-                <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
             </div>
-        </form>
+        </div>
+        <div class="card-footer ">
+            <button type="button" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>
+    
     </div>
-</div>
+</form>
 @stop

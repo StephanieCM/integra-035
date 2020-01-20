@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('content_header')
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
+     
 @stop
 @section('content')
-<div class="card">
-    <div class="card-header ">
-        <i>Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo.</i>
-    </div>
-    <div class="card-body">
-        <form >
-            @csrf
+<form >
+    @csrf
+    <div class="card">
+        <div class="card-header ">
+            <i>Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo.</i>
+        </div>
+        <div class="card-body">
             <div class="form-group row">
                 <p for="inputEmail3" class="col-sm-8 control-label">9- ¿Mi trabajo exige que esté muy concentrado?</p>
 
@@ -66,11 +67,12 @@
                     </select>
                 </div>
             </div> 
-            <div class="card-footer ">
-                <button type="button" class="btn btn-primary float-right">Guardar</button>
-                <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
-            </div>
-        </form>
+        </div>
+        <div class="card-footer ">
+            <button type="button" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>
     </div>
-</div>
+</form>
+
 @stop
