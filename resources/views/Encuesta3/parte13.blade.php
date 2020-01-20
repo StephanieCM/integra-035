@@ -3,21 +3,21 @@
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
 @section('content')
-<div class="card">
-    <div class="card-header ">
-        <i>Las preguntas siguientes están relacionadas con la atención a clientes y usuarios.</i>
-    </div>
-    <div class="card-body">
-        <form >
-            @csrf
+<form >
+    @csrf
+    <div class="card">
+        <div class="card-header ">
+            <i>Las preguntas siguientes están relacionadas con la atención a clientes y usuarios.</i>
+        </div>
+        <div class="card-body">
             <div class="form-group row">
                 <p for="inputEmail3" class="col-sm-8 ">- En mi trabajo debo brindar servicio a clientes o usuarios</p>
 
                 <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
+                    <select class="custom-select " id="servicioClientes" required>
                         <option value="">Seleccionar</option>
-                        <option onclick="muestra(1)">Si</option>
-                        <option onclick="muestra(2)">No</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
                     </select>
                 </div>
             </div> 
@@ -79,22 +79,23 @@
                     </div>
                 </div> 
             </div><!--fin div usuarios-->
-            <div class="card-footer ">
-                <button type="button" class="btn btn-primary float-right">Guardar</button>
-                <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+        <div class="card-footer ">
+            <button type="button" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>
+    </div>      
+</form>
 @stop
 @section('scripts')
-    <script>
-        function muestra(id){
-            if (id==1){
-                document.getElementById('atUsuarios').style.display = 'block';
-            }else if (id==2){
-                location.href = 'menu';
-            }
-        }
-    </script>
+<script>
+    $(document).ready(function() {
+        $('#servicioClientes').on('change', function() {
+            if(this.value == 1)
+               $('#atUsuarios').css('display','');
+            else
+                $('#atUsuarios').css('display','none');
+        });
+    });
+</script>
 @stop

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content_header')
-    <h2 class="text-center text-white">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
+    <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
 @section('content')
     <div class="list-group">
@@ -18,6 +18,5 @@
         <a href="p12" class="list-group-item list-group-item-action">12-Actos de violencia laboral</a>
         <a href="p13" class="list-group-item list-group-item-action">13-Atención a clientes y usuarios </a>
         <a href="p14" class="list-group-item list-group-item-action">14- Personas que supervisa</a>
-
     </div>
 @endsection

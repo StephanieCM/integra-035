@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
 
-   // protected $table = 'users';
+    protected $table = 'usuario';
     protected $primaryKey = 'idUsuario';
     protected $fillable = [
         'usuario', 'password',
@@ -39,4 +39,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function preguntasUsuarios()
+    {
+        return $this->hasMany('App\PreguntaUsuario','idUsuario','idUsuario');
+    }
 }

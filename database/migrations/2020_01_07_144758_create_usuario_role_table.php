@@ -16,7 +16,7 @@ class CreateUsuarioRoleTable extends Migration
         Schema::create('usuarioRole', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('idUsuarioRole');
-            $table->foreign('idUsuarioRole')->references('idUsuario')->on('users');
+            $table->foreign('idUsuarioRole')->references('idUsuario')->on('usuario');
             $table->integer('idRoleUsuario');
             $table->foreign('idRoleUsuario')->references('idRole')->on('role');
             $table->timestamps();

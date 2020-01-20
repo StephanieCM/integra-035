@@ -18,11 +18,14 @@
 
 Auth::routes();
 
+Route::resource('/respuestas','PreguntaUsuarioController');
+
+
 Route::get('/', 'HomeController@index'); 
 
-Route::get('seccion1',function(){
-    return view('Encuesta1.Seccion1');
-});
+#rutas para la encuesta 1
+Route::get('seccion1','PreguntaController@Seccion1');
+
 Route::get('seccion2',function(){
     return view('Encuesta1.Seccion2');
 });
@@ -33,7 +36,7 @@ Route::get('seccion4',function(){
     return view('Encuesta1.Seccion4');
 });
 
-
+#rutas para la encuesta 2
 Route::get('/index',function(){
     return view('Encuesta2.menu');
 });

@@ -3,13 +3,13 @@
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
 @section('content')
-<div class="card">
-    <div class="card-header ">
-        <i>Las preguntas siguientes están relacionadas con las decisiones que puede tomar en su trabajo.</i>
-    </div>
-    <div class="card-body">
-        <form >
-            @csrf
+<form >
+    @csrf
+    <div class="card">
+        <div class="card-header ">
+            <i>Las preguntas siguientes están relacionadas con las decisiones que puede tomar en su trabajo.</i>
+        </div>
+        <div class="card-body">
             <div class="form-group row">
                 <p for="inputEmail3" class="col-sm-8 control-label">23- ¿Mi trabajo permite que desarrolle nuevas habilidades?</p>
 
@@ -94,11 +94,12 @@
                     </select>
                 </div>
             </div>
-            <div class="card-footer ">
-                <button type="button" class="btn btn-primary float-right">Guardar</button>
-                <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
-            </div>
-        </form>
+        </div>
+        <div class="card-footer ">
+            <button type="button" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>
+    
     </div>
-</div>
+</form>
 @stop
