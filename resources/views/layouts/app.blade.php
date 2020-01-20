@@ -15,7 +15,7 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/adminlte.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -63,7 +63,8 @@
          <!-- Left side column. contains the logo and sidebar -->
         @include('layouts.sidebar')
          <!-- Content Wrapper. Contains page content -->
-         <div class="content-wrapper">
+         <div class="content-wrapper p-3">
+            @yield('content_header')
             @yield('content')
          </div>
 
