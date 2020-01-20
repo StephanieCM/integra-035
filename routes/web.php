@@ -18,7 +18,15 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index'); 
+Route::get('/', 'HomeController@index');
+
+#ADMINISTRACION DE ENCUESTAS
+Route::get('admi', function () {
+    return view('AdmiEncuestas.menu');
+});
+Route::get('gestion', function () {
+    return view('AdmiEncuestas.gestionPreguntas');
+});
 
 Route::get('seccion1',function(){
     return view('Encuesta1.Seccion1');

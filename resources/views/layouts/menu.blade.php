@@ -31,6 +31,11 @@
         <p>Encuesta 3</p>
       </a>
     </li>
-
   </ul>
+</li>
+<li class="nav-item">
+  <a href="admi" class="nav-link">
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p class="text">Gestión de Encuestas</p>
+  </a>
 </li>
