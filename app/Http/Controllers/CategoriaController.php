@@ -35,7 +35,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria;
+        $categoria->nombre = $request->txtNombre;
+        $categoria->save();
+
+        return redirect('admi')->with('msj','true');
     }
 
     /**
@@ -69,17 +73,20 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        
+        $acualizar = $categoria::find($request->sCategoria)->update(['nombre'=>$request->txtNombre]);
+        return redirect('admi')->with('msj','true');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     *  @param  \Illuminate\Http\Request  $request
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Request $request,Categoria $categoria)
     {
-        //
+        $eliminar = $categoria::find($request->sCategoria)->delete();
+        return redirect('admi')->with('msj','true');
     }
 }

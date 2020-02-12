@@ -3,7 +3,8 @@
     <h2 class="text-center">Identificación y análisis de los factores de riesgo psicosocial</h2>
 @endsection
 
-@section('content')
+@if ($activo)
+   @section('content')
     <div class="list-group">
         <a href="/parte1" class="list-group-item list-group-item-action">
             1- Condiciones del centro de trabajo
@@ -38,4 +39,11 @@
             {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
         </a>     
     </div>
-@endsection
+    @endsection 
+@else
+    @section('content')
+    <div class="alert alert-info" role="alert">
+        <h4>Por el momento la encuesta no se encuentra disponible</h4>
+      </div>
+    @endsection
+@endif

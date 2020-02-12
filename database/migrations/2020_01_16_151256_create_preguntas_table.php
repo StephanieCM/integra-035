@@ -18,6 +18,7 @@ class CreatePreguntasTable extends Migration
             $table->text('nombre')->nullable();
             $table->integer('encuesta')->nullable();
             $table->integer('folio')->nullable();
+            $table->boolean('estatus');
 
             //Llave foránea para categoria
             $table->integer('idCategoria')->nullable()->unsigned();

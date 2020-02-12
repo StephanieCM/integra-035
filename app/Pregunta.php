@@ -9,7 +9,7 @@ class Pregunta extends Model
     protected $table = 'pregunta';
     protected $primaryKey = 'idPregunta';
     protected $fillable = [
-        'nombre','encuesta','folio','idCategoria','idDominio','idDimension'
+        'nombre','encuesta','estatus','folio','idCategoria','idDominio','idDimension'
     ];
 
     public function categoria()

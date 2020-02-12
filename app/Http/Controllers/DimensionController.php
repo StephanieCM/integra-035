@@ -35,7 +35,11 @@ class DimensionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dimension = new Dimension;
+        $dimension->nombre = $request->txtNombre;
+        $dimension->save();
+
+        return redirect('admi')->with('msj','true');
     }
 
     /**
@@ -69,17 +73,19 @@ class DimensionController extends Controller
      */
     public function update(Request $request, Dimension $dimension)
     {
-        //
+        $acualizar = $dimension::find($request->sDimension)->update(['nombre'=>$request->txtNombre]);
+        return redirect('admi')->with('msj','true');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Dimension  $dimension
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dimension $dimension)
+    public function destroy(Request $request, Dimension $dimension)
     {
-        //
+        $eliminar = $dimension::find($request->sDimension)->delete();
+        return redirect('admi')->with('msj','true');
     }
 }

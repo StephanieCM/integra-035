@@ -2,7 +2,8 @@
 @section('content_header')
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
-@section('content')
+@if ($activo)
+    @section('content')
     <div class="list-group">
         <a href="p1" class="list-group-item list-group-item-action">1- Condiciones ambientales de su centro de trabajo <i class="fas fa-check-circle float-right text-success"></i></a>
         <a href="p2" class="list-group-item list-group-item-action">2- Cantidad y ritmo de trabajo que tiene <i class="fas fa-check-circle float-right text-success"></i></a>
@@ -19,4 +20,11 @@
         <a href="p13" class="list-group-item list-group-item-action">13-Atención a clientes y usuarios </a>
         <a href="p14" class="list-group-item list-group-item-action">14- Personas que supervisa</a>
     </div>
-@endsection
+    @endsection
+@else
+    @section('content')
+    <div class="alert alert-info" role="alert">
+        <h4>Por el momento la encuesta no se encuentra disponible</h4>
+    </div>
+    @endsection
+@endif

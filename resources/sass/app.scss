@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap/variables';
+@import '~bootstrap/scss/bootstrap/mixins';
+@import '~font-awesome/scss/font-awesome';
+
+@import '~select2/src/scss/core';
+
+@import '~select2-bootstrap-theme/src/select2-bootstrap4.vars';
+@import '~select2-bootstrap-theme/src/select2-bootstrap';
+@import '~select2-bootstrap-theme/src/select2-bootstrap4.after';

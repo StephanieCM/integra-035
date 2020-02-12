@@ -1,41 +1,53 @@
 @extends('layouts.app')
-@section('conten_header')
+@section('content_header')
 @endsection
 @section('content')
     <div class="card">
         <div class="card-header"><i>Buscar por</i></div>
-        <form action="">
+        <form action="{{url('busqueda')}}" method="POST">
+            @csrf
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <select name="" id="" class="custom-select busqueda">
+                        <select name="categoria" id="" class="custom-select busqueda">
                             <option value="">Categoría</option>
-                            <option value="">cate 1</option>
-                            <option value="">cate2</option>
+                            @foreach ($categoria as $cat)
+                            <option value="{{$cat->idCategoria}}">{{$cat->nombre}}</option>    
+                            @endforeach
                         </select>
                     </div>
                     <div class="col">
-                        <select name="" id="" class="custom-select busqueda">
+                        <select name="dominio" id="" class="custom-select busqueda">
                             <option value="">Dominio</option>
-                            <option value=""></option>
+                            @foreach ($dominio as $dom)
+                            <option value="{{$dom->idDominio}}">{{$dom->nombre}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col">
-                        <select name="" id=""  class="custom-select busqueda">
+                        <select name="dimension" id=""  class="custom-select busqueda">
                             <option value="">Dimensión</option>
-                            <option value=""></option>
+                            @foreach ($dimension as $dim)
+                            <option value="{{$dim->idDimension}}">{{$dim->nombre}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col">
-                        <select name="" id=""  class="custom-select busqueda">
+                        <select name="encuesta" id=""  class="custom-select busqueda">
                             <option value="">Encuesta</option>
-                            <option value=""></option>
+                            <option value="1">Encuesta 1</option>
+                            <option value="2">Encuesta 2</option>
+                            <option value="3">Encuesta 3</option>
                         </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-success">Buscar</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    
     <div class="card ">
         <div class="table-responsive p-3">
             <table class="table">
@@ -44,37 +56,36 @@
                     <th scope="col">Folio</th>
                     <th scope="col">Encuesta</th>
                     <th scope="col">Pregunta</th>
+                    <th scope="col">Estatus</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <a href="#"><i class="fas fa-edit fa-lg text-warning" data-toggle="modal" data-target="#editarPreguntas"></i></a>
-                        <a href="#" class="pl-4"><i class="fas fa-trash-alt fa-lg text-danger"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                    @foreach ($preguntas as $pre)
+                    <tr>
+                        <th class="text-center" scope="row">{{$pre->folio}}</th>
+                        <td class="text-center">{{$pre->encuesta}}</td>
+                        <td>{{$pre->nombre}}</td>
+                        @if ($pre->estatus == true)
+                        <td class=" text-success">Activo</td>
+                        @else
+                        <td class="text-danger">Inactivo</td>
+                        @endif
+                        <td>
+                            <form action="/editarPregunta" method="POST">
+                                @csrf
+                                <input type="hidden" name="idPregunta" value="{{$pre->idPregunta}}">
+                                <button type="submit" class="btn btn-light"><i class="fas fa-edit text-warning"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
               </table>    
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="editarPreguntas" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="editarPreguntas" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -95,9 +106,10 @@
                                 <input type="number" name="" id="fo" class="form-control">
                             </div>
                         </div>
-                        <div class="row">
+                        <hr>
+                        <div class="form-row">
                             <div class="col-lg">
-                                <select class="custom-select busqueda" name="" id="">
+                                <select class="custom-select" name="" id="">
                                     <option value="" selected>Encuesta</option>
                                     <option value="">Encuesta 1</option>
                                     <option value="">Encuesta 2</option>
@@ -108,7 +120,7 @@
                                 </small>
                             </div>
                             <div class="col-lg">
-                                <select class="custom-select busqueda" name="" id="">
+                                <select class="custom-select" name="" id="">
                                     <option value="" selected>Categoría</option>
                                     <option value=""></option>
                                     <option value=""></option>
@@ -118,7 +130,7 @@
                                 </small>
                             </div>
                             <div class="col-lg">
-                                <select class="custom-select busqueda" name="" id="">
+                                <select class="custom-select" name="" id="">
                                     <option value="" selected>Dominio</option>
                                     <option value=""></option>
                                     <option value=""></option>
@@ -128,7 +140,7 @@
                                 </small>
                             </div>
                             <div class="col-lg">
-                                <select class="form-control busqueda" name="" id="">
+                                <select class="custom-select" name="" id="">
                                     <option value="" selected>Dimensión</option>
                                     <option value=""></option>
                                     <option value=""></option>
@@ -136,6 +148,15 @@
                                 <small class="form-text text-muted">
                                     Selecciona una dimensión
                                 </small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="field_wrapper">
+                            <div class="form-inline">
+                                <input type="text" name="nombres[]" value="" class="form-control mb-2 col-md-6" placeholder="Nombre"/>
+                                <input type="number" name="ponderacion[]" value="" class="form-control col-md-3 mb-2" placeholder="ponderación"/>
+                                <a href="javascript:void(0);" class="add_button" title="Agregar Respuesta"><i class="fas fa-plus-circle"></i></a>
+                                <a href="javascript:void(0);" class="remove_button" title="Eliminar Respuesta"><i class="far fa-trash-alt text-danger"></i></a>
                             </div>
                         </div>
                     </div>
@@ -146,7 +167,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('scripts')
     <script>
@@ -179,7 +200,14 @@
         });
         $('.busqueda').select2({
             theme:'classic'
-        });        
+        });
+        var update = '<?php echo(session()->has("update")); ?> ';
+            if(update  == true ){
+                toastr.success("Pregunta Actualizada","Exito",{
+                    "progressBar": true
+                })
+                
+            }        
     });
     </script>
 @endsection

@@ -35,7 +35,11 @@ class DominioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dominio = new Dominio;
+        $dominio->nombre = $request->txtNombre;
+        $dominio->save();
+
+        return redirect('admi')->with('msj','true');
     }
 
     /**
@@ -69,17 +73,20 @@ class DominioController extends Controller
      */
     public function update(Request $request, Dominio $dominio)
     {
-        //
+        $acualizar = $dominio::find($request->sDominio)->update(['nombre'=>$request->txtNombre]);
+        return redirect('admi')->with('msj','true');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Dominio  $dominio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dominio $dominio)
+    public function destroy(Request $request, Dominio $dominio)
     {
-        //
+        $eliminar = $dominio::find($request->sDominio)->delete();
+        return redirect('admi')->with('msj','true');
+    
     }
 }
