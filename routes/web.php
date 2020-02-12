@@ -46,118 +46,45 @@ Route::get('/periodos','PeriodoController@index');
 Route::post('/periodos/add','PeriodoController@store');
 Route::post('/periodos/update','PeriodoController@update');
 
-#rutas para la encuesta 1
-Route::get('seccion1','PreguntaController@Seccion1');
+#Ruta para acciones
+Route::resource('acciones','AccionController');
 
-Route::get('seccion2',function(){
-    return view('Encuesta1.Seccion2');
-});
-Route::get('seccion3',function(){
-    return view('Encuesta1.Seccion3');
-});
-Route::get('seccion4',function(){
-    return view('Encuesta1.Seccion4');
-});
+#rutas para la encuesta 1
+Route::get('menu1','HomeController@indexEncuesta1');
+
+Route::get('seccion1','HomeController@seccion1');
+Route::post('respuestas/encuesta1','PreguntaUsuarioController@store');
+
+Route::get('seccion2','HomeController@seccion2');
 
 #rutas para la encuesta 2
-use App\Periodo;
-Route::get('/index',function(){
-    $fecha = Date('Y-m-d');
-    $activo = false;
-    $periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
-    if ($periodo != null){
-        for($i=0;$i<count($periodo);$i++){
-            if (strtotime($fecha) >= strtotime($periodo[$i]->fechaInicio) && strtotime($fecha) <= strtotime($periodo[$i]->fechaFin) ){
-                $activo = true;
-            break;
-            }
-        }
-    }
-    
-    return view('Encuesta2.menu',compact('activo'));
-});
-Route::get('/parte1',function(){
-    return view('Encuesta2.Parte1');
-});
-Route::get('/parte2',function(){
-    return view('Encuesta2.Parte2');
-});
-Route::get('/parte3',function(){
-    return view('Encuesta2.Parte3');
-});
-Route::get('/parte4',function(){
-    return view('Encuesta2.Parte4');
-});
-Route::get('/parte5',function(){
-    return view('Encuesta2.Parte5');
-});
-Route::get('/parte6',function(){
-    return view('Encuesta2.Parte6');
-});
-Route::get('/parte7',function(){
-    return view('Encuesta2.Parte7');
-});
-Route::get('/parte8',function(){
-    return view('Encuesta2.Parte8');
-});
+Route::get('menu2','HomeController@indexEncuesta2');
+Route::get('parte1','HomeController@parte1');
+Route::get('parte2','HomeController@parte2');
+Route::get('parte3','HomeController@parte3');
+Route::get('parte4','HomeController@parte4');
+Route::get('parte5','HomeController@parte5');
+Route::get('parte6','HomeController@parte6');
+Route::get('parte7','HomeController@parte7');
+Route::get('parte8','HomeController@parte8');
+Route::post('respuestas/encuesta2','PreguntaUsuarioController@storeEncuesta2');
+Route::post('respuestas/saveEncuesta2','PreguntaUsuarioController@saveEncuesta2');
 
 #rutas para la encuesta 3
-Route::get('menu', function () {
-    $fecha = Date('Y-m-d');
-    $activo = false;
-    $periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
-    if ($periodo != null){
-        for($i=0;$i<count($periodo);$i++){
-            if (strtotime($fecha) >= strtotime($periodo[$i]->fechaInicio) && strtotime($fecha) <= strtotime($periodo[$i]->fechaFin) ){
-                $activo = true;
-            break;
-            }
-        }
-    }
-    return view('Encuesta3.menu' ,compact('activo'));
-});
-
-Route::get('p1', function () {
-    return view('Encuesta3.parte1');
-});
-Route::get('p2', function () {
-    return view('Encuesta3.parte2');
-});
-Route::get('p3', function () {
-    return view('Encuesta3.parte3');
-});
-Route::get('p4', function () {
-    return view('Encuesta3.parte4');
-});
-Route::get('p5', function () {
-    return view('Encuesta3.parte5');
-});
-Route::get('p6', function () {
-    return view('Encuesta3.parte6');
-});
-Route::get('p7', function () {
-    return view('Encuesta3.parte7');
-});
-Route::get('p8', function () {
-    return view('Encuesta3.parte8');
-});
-Route::get('p9', function () {
-    return view('Encuesta3.parte9');
-});
-Route::get('p10', function () {
-    return view('Encuesta3.parte10');
-});
-Route::get('p11', function () {
-    return view('Encuesta3.parte11');
-});
-Route::get('p12', function () {
-    return view('Encuesta3.parte12');
-});
-Route::get('p13', function () {
-    return view('Encuesta3.parte13');
-});
-Route::get('p14', function () {
-    return view('Encuesta3.parte14');
-});
-
-
+Route::get('menu3','HomeController@indexEncuesta3');
+Route::get('p1','HomeController@p1');
+Route::get('p2','HomeController@p2');
+Route::get('p3','HomeController@p3');
+Route::get('p4','HomeController@p4');
+Route::get('p5','HomeController@p5');
+Route::get('p6','HomeController@p6');
+Route::get('p7','HomeController@p7');
+Route::get('p8','HomeController@p8');
+Route::get('p9','HomeController@p9');
+Route::get('p10','HomeController@p10');
+Route::get('p11','HomeController@p11');
+Route::get('p12','HomeController@p12');
+Route::get('p13','HomeController@p13');
+Route::get('p14','HomeController@p14');
+Route::post('respuestas/encuesta3','PreguntaUsuarioController@storeEncuesta3');
+Route::post('respuestas/saveEncuesta3','PreguntaUsuarioController@saveEncuesta3');

@@ -18,5 +18,11 @@ class UsuarioSeeder extends Seeder
         	'usuario' => 'root',
         	'password' => bcrypt('123456789'),
         ]);
+
+        DB::table('usuario')->insert([
+        	'idUsuario'=> '2',
+        	'usuario' => 'empleado',
+        	'password' => bcrypt('0123456789'),
+        ]);
     }
 }

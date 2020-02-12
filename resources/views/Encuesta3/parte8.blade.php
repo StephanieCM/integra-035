@@ -3,102 +3,35 @@
     <h2 class="text-center">Identificación y Análisis de los Factores de Riesgo Psicosocial y Evaluación del Entorno Organizacional en los Centros de Trabajo</h2>
 @stop
 @section('content')
-<form >
+<form action="respuestas/encuesta3" method="POST">
     @csrf
     <div class="card">
         <div class="card-header ">
             <i>Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su trabajo.</i>
         </div>
         <div class="card-body">
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">31- Me informan con claridad cuáles son mis funciones</p>
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
+            @foreach ($questions as $question)
+                <div class="form-group row">
+                    <div class="col-xs-12 col-sm-7 col-md-7">
+                        {{$question->folio}}.-{{$question->nombre}}
+                    </div>
+                    <div class="col-xs-5 col-sm-3 col-md-3">
+                        <select class="custom-select  is-invalid" name="{{$question->idPregunta}}" required>
+                            <option value="">Seleccionar</option>
+                            @foreach ($ponderaciones as $item)
+                                @if ($question->idPregunta == $item->idPregunta)
+                                    <option value="{{$item->idPonderacion}}">{{$item->respuesta}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">32- Me explican claramente los resultados que debo obtener en mi trabajo</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">33- Me explican claramente los objetivos de mi trabajo</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">34- Me informan con quién puedo resolver problemas o asuntos de trabajo</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">35- Me permiten asistir a capacitaciones relacionadas con mi trabajo</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 ">36- Recibo capacitación útil para hacer mi trabajo</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="card-footer ">
-            <button type="button" class="btn btn-primary float-right">Guardar</button>
-            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
-        </div>
-    
+            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu3" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>    
     </div>
 </form>
 @stop
