@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <form action="" method="post">
+    <form action="respuestas/saveEncuesta2" method="post">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -18,63 +18,35 @@
                         En mi trabajo debo brindar servicio a clientes o usuarios
                     </div>
                     <div class="col-xs-6 col-sm-3 col-md-3">
-                        <select class="custom-select" id="servicioClientes">
+                        <select class="custom-select" name="clientesJefes" id="servicioClientes">
                             <option value="1">Si</option>
                             <option value="0" selected>No</option>
                         </select>
                     </div>
 
-                </div>
-                <div class="form-group row show-row" style="display:none">
-                    <div class="col-xs-12 col-sm-7 col-md-7">
-                    41.- Atiendo clientes o usuarios muy enojados
+                </div><br>
+                @foreach ($questions as $question)
+                    <div class="form-group row show-row" style="display:none">
+                        <div class="col-xs-12 col-sm-7 col-md-7">
+                            {{$question->folio}}.-{{$question->nombre}}
+                        </div>
+                        <div class="col-xs-5 col-sm-3 col-md-3">
+                            <select class="custom-select" name="{{$question->idPregunta}}" required>
+                                <option value="">Seleccionar</option>
+                                @foreach ($ponderaciones as $item)
+                                    @if ($question->idPregunta == $item->idPregunta)
+                                        <option value="{{$item->idPonderacion}}">{{$item->respuesta}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-xs-5 col-sm-3 col-md-3">
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option>Seleccionar</option>
-                            <option value="">Siempre</option>
-                            <option value="">Casi siempre</option>
-                            <option value="">Algunas veces</option>
-                            <option value="">Casi nunca</option>
-                            <option value="">Nunca</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row show-row" style="display:none">
-                    <div class="col-xs-12 col-sm-7 col-md-7">
-                        42.- Mi trabajo me exige atender personas muy necesitadas de ayuda o enfermas
-                    </div>
-                    <div class="col-xs-5 col-sm-3 col-md-3">
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option>Seleccionar</option>
-                            <option value="">Siempre</option>
-                            <option value="">Casi siempre</option>
-                            <option value="">Algunas veces</option>
-                            <option value="">Casi nunca</option>
-                            <option value="">Nunca</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row show-row" style="display:none">
-                    <div class="col-xs-12 col-sm-7 col-md-7">
-                        43.- Para hacer mi trabajo debo demostrar sentimientos distintos a los míos
-                    </div>
-                    <div class="col-xs-5 col-sm-3 col-md-3">
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option>Seleccionar</option>
-                            <option value="">Siempre</option>
-                            <option value="">Casi siempre</option>
-                            <option value="">Algunas veces</option>
-                            <option value="">Casi nunca</option>
-                            <option value="">Nunca</option>
-                        </select>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="card-footer ">
-                <button type="button" class="btn btn-primary float-right">Guardar</button>
-                <a href="index" class="btn btn-secondary float-right mr-3">Menu</a>
-            </div> 
+                <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                <a href="menu2" class="btn btn-secondary float-right mr-3">Menu</a>
+            </div>
         </div>
     </form>
                 

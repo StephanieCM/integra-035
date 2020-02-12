@@ -5,37 +5,53 @@
 
 @section('content')
     <div class="list-group">
-        <a href="/parte1" class="list-group-item list-group-item-action">
+        <a href={{$secciones[0] ? '#' : 'parte1'}} class="list-group-item list-group-item-action">
             1- Condiciones del centro de trabajo
-            <i class="fas fa-check-circle float-right text-success"></i>
+            @if ($secciones[0])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>
-        <a href="/parte2" class="list-group-item list-group-item-action">
+        <a href={{$secciones[1] ? '#' : 'parte2'}} class="list-group-item list-group-item-action">
             2- Actividades y responsabilidades en el trabajo
-            <i class="fas fa-check-circle float-right text-success"></i>
+            @if ($secciones[1])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>
-        <a href="/parte3" class="list-group-item list-group-item-action">
+        <a href={{$secciones[2] ? '#' : 'parte3'}} class="list-group-item list-group-item-action">
             3- Tiempo destinado al trabajo
-            <i class="fas fa-check-circle float-right text-success"></i>
-        </a>   
-        <a href="/parte4" class="list-group-item list-group-item-action">
+            @if ($secciones[2])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
+        </a> 
+        <a href={{$secciones[3] ? '#' : 'parte4'}} class="list-group-item list-group-item-action">
             4- Decisiones en el trabajo
-            {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
+            @if ($secciones[3])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>
-        <a href="/parte5" class="list-group-item list-group-item-action">
+        <a href={{$secciones[4] ? '#' : 'parte5'}} class="list-group-item list-group-item-action">
             5- Capacitación e información
-            {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
+            @if ($secciones[4])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>  
-        <a href="/parte6" class="list-group-item list-group-item-action">
+        <a href={{$secciones[5] ? '#' : 'parte6'}} class="list-group-item list-group-item-action">
             6- Compañeros de trabajo y jefe
-            {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
+            @if ($secciones[5])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>
-        <a href="/parte7" class="list-group-item list-group-item-action">
+        <a href={{$secciones[6] ? '#' : 'parte7'}} class="list-group-item list-group-item-action">
             7- Atención a clientes y usuarios
-            {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
+            @if ($secciones[6])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif     
         </a>  
-        <a href="/parte8" class="list-group-item list-group-item-action">
+        <a href={{$secciones[7] ? '#' : 'parte8'}} class="list-group-item list-group-item-action">
             8- Jefe
-            {{-- <i class="fas fa-check-circle float-right text-success"></i> --}}
+            @if ($secciones[7])
+                <i class="fas fa-check-circle float-right text-success"></i>
+            @endif
         </a>     
     </div>
 @endsection

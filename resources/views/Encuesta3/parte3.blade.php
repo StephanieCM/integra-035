@@ -4,74 +4,35 @@
      
 @stop
 @section('content')
-<form >
+<form action="respuestas/encuesta3" method="POST">
     @csrf
     <div class="card">
         <div class="card-header ">
             <i>Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo.</i>
         </div>
         <div class="card-body">
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 control-label">9- ¿Mi trabajo exige que esté muy concentrado?</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
+            @foreach ($questions as $question)
+                <div class="form-group row">
+                    <div class="col-xs-12 col-sm-7 col-md-7">
+                        {{$question->folio}}.-{{$question->nombre}}
+                    </div>
+                    <div class="col-xs-5 col-sm-3 col-md-3">
+                        <select class="custom-select  is-invalid" name="{{$question->idPregunta}}" required>
+                            <option value="">Seleccionar</option>
+                            @foreach ($ponderaciones as $item)
+                                @if ($question->idPregunta == $item->idPregunta)
+                                    <option value="{{$item->idPonderacion}}">{{$item->respuesta}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 control-label">10- ¿Mi trabajo requiere que memorice mucha información?</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 control-label">11- ¿En mi trabajo tengo que tomar decisiones difíciles muy rápido?</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
-            <div class="form-group row">
-                <p for="inputEmail3" class="col-sm-8 control-label">12- ¿Mi trabajo exige que atienda varios asuntos al mismo Mi trabajo me exige hacer mucho esfuerzo físicotiempo?</p>
-
-                <div class="col-sm-4">
-                    <select class="custom-select " id="" required>
-                        <option value="">Seleccionar</option>
-                        <option value="1">Simpre</option>
-                        <option value="2">Casi Siempre</option>
-                        <option value="3">Algunas Veces</option>
-                        <option value="3">Casi Nunca</option>
-                        <option value="3">Nunca</option>
-                    </select>
-                </div>
-            </div> 
+            @endforeach
         </div>
         <div class="card-footer ">
-            <button type="button" class="btn btn-primary float-right">Guardar</button>
-            <a href="menu" class="btn btn-secondary float-right mr-3">Menu</a>
-        </div>
+            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+            <a href="menu3" class="btn btn-secondary float-right mr-3">Menu</a>
+        </div>  
     </div>
 </form>
 
