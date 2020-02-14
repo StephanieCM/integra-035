@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pregunta;
 use App\User;
+use App\Periodo;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -33,37 +34,33 @@ class HomeController extends Controller
     #encunesta 1
     public function indexEncuesta1()
     {
-        $fecha = Date('Y-m-d');
-        $activo = false;
-        $periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
-        if ($periodo != null){
-            for($i=0;$i<count($periodo);$i++){
-                if (strtotime($fecha) >= strtotime($periodo[$i]->fechaInicio) && strtotime($fecha) <= strtotime($periodo[$i]->fechaFin) ){
-                    $activo = true;
-                break;
+        $activo = $this->encuentraPeriodo();
+        if ($activo){
+            $seccion2 = false;
+            $categoria = DB::table('categoria')
+                ->join('pregunta','categoria.idCategoria','=','pregunta.idCategoria')
+                ->select('categoria.idCategoria','categoria.nombre')->where('pregunta.encuesta',1)
+                ->distinct()->first();
+
+            $answersSection1 = $this->getAnswersByUserEncuesta1($categoria->idCategoria,false);
+            if(!empty($answersSection1))
+            {
+                $valorSection1 = $this->getPonderation($answersSection1);
+                if($valorSection1 != 0)
+                {
+                    $seccion2 = true;
                 }
             }
-        }
-        $seccion2 = false;
-        $categoria = DB::table('categoria')
-        ->join('pregunta','categoria.idCategoria','=','pregunta.idCategoria')
-        ->select('categoria.idCategoria','categoria.nombre')->where('pregunta.encuesta',1)
-        ->distinct()->first();
 
-        $answersSection1 = $this->getAnswersByUserEncuesta1($categoria->idCategoria,false);
-        if(!empty($answersSection1))
-        {
-            $valorSection1 = $this->getPonderation($answersSection1);
-            if($valorSection1 != 0)
-            {
-                $seccion2 = true;
-            }
+            $answerSection2 = $this->getAnswersByUserEncuesta1($categoria->idCategoria,true);
+            $contestado = empty($answerSection2) ? false : true;
+            #dd($answerSection2, $contestado);
+        } else {
+            $seccion2 = null;
+            $contestado = null;
         }
-
-        $answerSection2 = $this->getAnswersByUserEncuesta1($categoria->idCategoria,true);
-        $contestado = empty($answerSection2) ? false : true;
-        #dd($answerSection2, $contestado);
-        return view('Encuesta1.menu')->with('seccion2',$seccion2)->with('contestado',$contestado);
+        
+        return view('Encuesta1.menu')->with('seccion2',$seccion2)->with('contestado',$contestado)->with('activo',$activo);
     }
 
     public function seccion1()
@@ -73,7 +70,7 @@ class HomeController extends Controller
             ->select('categoria.idCategoria','categoria.nombre')->where('pregunta.encuesta',1)
             ->distinct()->first();
         $answersByUser = $this->getAnswersByUserEncuesta1($categoria->idCategoria,false);
-        if($answersByUser->isEmpty())
+        if(empy($answersByUser))
         {
             $preguntas = DB::table('pregunta')->select('idPregunta','nombre')
                 ->where(['encuesta' => 1, 'idCategoria' => $categoria->idCategoria])->get();
@@ -134,8 +131,14 @@ class HomeController extends Controller
     #encuesta 2
     public function indexEncuesta2()
     {
-        $sections = $this->getAnswersByUserEncuesta2();
-        return view('Encuesta2.menu')->with('secciones',$sections);
+        $activo = $this->encuentraPeriodo();
+        if ($activo){
+            $sections = $this->getAnswersByUserEncuesta2();
+        } else {
+            $sections = null;
+        }
+        
+        return view('Encuesta2.menu')->with('secciones',$sections)->with('activo',$activo);
     }
     
     public function parte1()
@@ -299,8 +302,13 @@ class HomeController extends Controller
     #encuesta 3
     public function indexEncuesta3()
     {
-        $sections = $this->getAnswersByUserEncuesta3();
-        return view('Encuesta3.menu')->with('secciones',$sections);
+        $activo = $this->encuentraPeriodo();
+        if ($activo){
+            $sections = $this->getAnswersByUserEncuesta3();
+        } else {
+            $sections = null;
+        }
+        return view('Encuesta3.menu')->with('secciones',$sections)->with('activo',$activo);
     } 
     
     public function p1()
@@ -574,5 +582,18 @@ class HomeController extends Controller
             array_push($arraySections,true);
         
         return $arraySections;   
+    }
+
+    public function encuentraPeriodo(){
+        $fecha = Date('Y-m-d');
+        $periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
+        if ($periodo != null){
+            for($i=0;$i<count($periodo);$i++){
+                if (strtotime($fecha) >= strtotime($periodo[$i]->fechaInicio) && strtotime($fecha) <= strtotime($periodo[$i]->fechaFin) ){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -2,32 +2,40 @@
 @section('content_header')
     <h2 class="text-center">Cuestionario para identificar a los trabajadores que fueron sujetos a acontecimientos traumáticos severos</h2>
 @endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-5">
-        <div class="list-group">
-            <a href="{{$seccion2 ? '#' : 'seccion1'}}" class="list-group-item list-group-item-action">
-                Sección 1
-                @if ($seccion2)
-                    <i class="fas fa-check-circle float-right text-success"></i>
-                @endif
-            </a>
-            {{-- <a href="/seccion1" class="list-group-item list-group-item-action">
-                Sección 1
-            </a> --}}
-            @if ($seccion2)
-                <a href="{{$contestado ? '#' : '/seccion2'}}" class="list-group-item list-group-item-action">
-                    Sección 2
-                    @if ($contestado)
-                        <i class="fas fa-check-circle float-right text-success"></i>
+@if ($activo)
+    @section('content')
+        <div class="row">
+            <div class="col-md-5">
+                <div class="list-group">
+                    <a href="{{$seccion2 ? '#' : 'seccion1'}}" class="list-group-item list-group-item-action">
+                        Sección 1
+                        @if ($seccion2)
+                            <i class="fas fa-check-circle float-right text-success"></i>
+                        @endif
+                    </a>
+                    {{-- <a href="/seccion1" class="list-group-item list-group-item-action">
+                        Sección 1
+                    </a> --}}
+                    @if ($seccion2)
+                        <a href="{{$contestado ? '#' : '/seccion2'}}" class="list-group-item list-group-item-action">
+                            Sección 2
+                            @if ($contestado)
+                                <i class="fas fa-check-circle float-right text-success"></i>
+                            @endif
+                        </a>
                     @endif
-                </a>
-            @endif
+                </div>
+            </div>
+        </div>  
+    @endsection
+@else
+    @section('content')
+        <div class="alert alert-info" role="alert">
+            <h4>Por el momento la encuesta no se encuentra disponible</h4>
         </div>
-    </div>
-</div>
-@endsection
+    @endsection
+@endif
+
 @section('scripts')
     <script>
         $(document).ready(function() {

@@ -42,6 +42,6 @@ class User extends Authenticatable
 
     public function preguntasUsuarios()
     {
-        return $this->hasMany('App\PreguntaUsuario','idUsuario','idUsuario');
+        return $this->hasMany('App\preguntaUsuario','idUsuario','idUsuario');
     }
 }
