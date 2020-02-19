@@ -25,4 +25,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    
+    public function __construct(){
+    // Force SSL in production
+    if (config('app.env') == 'production') {
+        URL::forceScheme('https');
+    }
+}
 }
