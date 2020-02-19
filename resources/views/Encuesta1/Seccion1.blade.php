@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <form action="/respuestas/encuesta1" method="post">
+    <form action="respuestas/encuesta1" method="post">
         @csrf
         <div class="card">
             <div class="card-body">

@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">InfyOm</span>
+        <span class="brand-text font-weight-light">Menú</span>
     </a>
 
     <!-- Sidebar -->
@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" class="img-circle" alt="User Image"/>
+            <img srcset="{{URL::to('/img/integra.png')}}" class="img-circle" alt="User Image"/>
         </div>
         <div class="info">
             @if (Auth::guest())

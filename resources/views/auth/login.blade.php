@@ -21,10 +21,6 @@
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
-        </div>
-
         <div class="card">
             <div class="card-bpdy login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>

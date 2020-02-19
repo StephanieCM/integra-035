@@ -57,7 +57,7 @@
                             <span class="hidden-xs">{{ Auth::user()->usuario }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                          <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById(    'logout-form').submit();" class="dropdown-item dropdown-footer">Sign out</a>
+                          <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById(    'logout-form').submit();" class="dropdown-item dropdown-footer">Cerrar sesión</a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                               @csrf
                           </form>
@@ -100,7 +100,7 @@
                 <li><a href="{{ url('/home') }}">Home</a></li>
                <!-- Authentication Links -->
                <li><a href="{{ url('/login') }}">Login</a></li>
-               <li><a href="{{ url('/register') }}">Register</a></li>
+              
             </div>
         </li>
     </ul>

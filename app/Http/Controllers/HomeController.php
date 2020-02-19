@@ -70,7 +70,7 @@ class HomeController extends Controller
             ->select('categoria.idCategoria','categoria.nombre')->where('pregunta.encuesta',1)
             ->distinct()->first();
         $answersByUser = $this->getAnswersByUserEncuesta1($categoria->idCategoria,false);
-        if(empy($answersByUser))
+        if(empty($answersByUser))
         {
             $preguntas = DB::table('pregunta')->select('idPregunta','nombre')
                 ->where(['encuesta' => 1, 'idCategoria' => $categoria->idCategoria])->get();
