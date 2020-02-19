@@ -23,26 +23,26 @@
     <div class="login-box">
         <div class="card">
             <div class="card-bpdy login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                
                 <form action="{{ url('/login') }}" method="post">
                     @csrf
                     <!-- en esta parte hay que cambiar todo el campo a tet y los valores por la variable de nombre de usuario-->
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="usuario" placeholder="User">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        @if ($errors->has('email'))
+                        @if ($errors->has('usuario'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong>{{ $errors->first('usuario') }}</strong>
                             </span>
                         @endif
                     </div>
                     <!-- Mismo caso para la contraseña, se cambia por el nombre del campo de la bd -->
                     <div class="input-group mb-3 has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -56,26 +56,20 @@
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" name="" id="">
-                                <label for="">Remember Me</label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary">Sign In</button>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
                     </div>
                 </form>
 
-                <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-                <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+              <!---------  <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+                <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>--->
             </div>
         </div>
     </div>
 
     <!-- /.login-logo -->
     {{-- <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <!--<p class="login-box-msg"></p>--->
 
         <form method="post" action="{{ url('/login') }}">
             @csrf
@@ -83,15 +77,15 @@
             <div class="form-group has-feedback ">
                 <input type="text" class="form-control" name="usuario"  placeholder="Usuario">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                @if ($errors->has('email'))
+                @if ($errors->has('usuario'))
                     <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
+                    <strong>{{ $errors->first('usuario') }}</strong>
                 </span>
                 @endif
             </div>
             <!-- Mismo caso para la contraseña, se cambia por el nombre del campo de la bd -->
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" class="form-control" placeholder="Password" name="password">
+                <input type="password" class="form-control" placeholder="Contraseña" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
                     <span class="help-block">
@@ -101,23 +95,23 @@
 
             </div>
             <div class="row">
-                <div class="col-xs-8">
+               <!-- <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
                             <input type="checkbox" name="remember"> Remember Me
                         </label>
                     </div>
-                </div>
+                </div>-->
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>-->
+      <!-------  <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>-->------->
 
     </div> --}}
 
