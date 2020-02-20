@@ -21,6 +21,7 @@
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
+        <div><img srcset="{{URL::to('/img/integra.png')}}"  class="rounded mx-auto d-block" alt="User Image"/></div>
         <div class="card">
             <div class="card-bpdy login-card-body">
                 
