@@ -195,8 +195,8 @@ class PonderacionSeeder extends Seeder
 
        
         //ENRIQUE ENCUESTA 2
-        $resInvertidas = ['Nunca','CasiNunca','AlgunasVeces','CasiSiempre','Siempre'];
-        $resOrdenadas = ['Siempre','CasiSiempre','AlgunasVeces','CasiNunca','Nunca'];
+        $resInvertidas = ['Nunca','Casi nunca','Algunas veces','Casi siempre','Siempre'];
+        $resOrdenadas = ['Siempre','Casi siempre','Algunas veces','Casi nunca','Nunca'];
         $ponderacion = 31;
         for($i=16;$i<=32;$i++){
                 for($j=0;$j<5;$j++){

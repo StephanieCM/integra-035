@@ -1,5 +1,5 @@
 <li class="nav-item">
-  <a href="/integraNom/public/" class="nav-link">
+  <a href="/" class="nav-link">
     <i class="nav-icon fas fa-tachometer-alt"></i>
     <p class="text">Inicio</p>
   </a>
