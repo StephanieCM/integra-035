@@ -18,8 +18,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
-Route::post('/', 'HomeController@index');
+Route::get('/', 'InicioController@verLogin');
+Route::post('/login', 'InicioController@login');
+Route::post('/salir', 'InicioController@cerrarSesion');
+
+Route::get('/inicio', 'HomeController@index');
 
 #ADMINISTRACION DE ENCUESTAS
 Route::get('admi', 'AdmiController@index');
