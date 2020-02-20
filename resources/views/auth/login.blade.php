@@ -21,8 +21,9 @@
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div><img src="/img/integra.png"  class="rounded mx-auto d-block" alt="Integra Automation"/></div>
+
         <div class="card">
+            <img src="/img/integra.png"  class="card-img-top" width="80%" alt="Integra Automation"/>
             <div class="card-bpdy login-card-body">
                 
                 <form action="{{ url('/login') }}" method="post">
