@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(EncuestaSeeder::class);
         $this->call(PonderacionSeeder::class);*/
-        $this->call(Usuario2Seeder::class);
+        $this->call(Usuarios2Seeder::class);
     }
 }
