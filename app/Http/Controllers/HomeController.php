@@ -586,7 +586,8 @@ class HomeController extends Controller
 
     public function encuentraPeriodo(){
         $fecha = Date('Y-m-d');
-        $periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
+        #$periodo = Periodo::whereMonth('fechaInicio','=',Date('m'))->where('estatus',true)->get();
+        $periodo = Periodo::all();
         if ($periodo != null){
             for($i=0;$i<count($periodo);$i++){
                 if (strtotime($fecha) >= strtotime($periodo[$i]->fechaInicio) && strtotime($fecha) <= strtotime($periodo[$i]->fechaFin) ){
